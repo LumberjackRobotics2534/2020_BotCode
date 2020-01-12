@@ -41,20 +41,22 @@ public class Robot extends TimedRobot {
   double deadzone = 0.3;
   boolean buttonA = false;
   boolean buttonB = false;
+  boolean buttonX = false;
+  boolean buttonY = false;
   
   //Shooter Testing
-  /*WPI_TalonSRX topFlyWheel = new WPI_TalonSRX(0);
+  WPI_TalonSRX topFlyWheel = new WPI_TalonSRX(2);
   WPI_TalonSRX bottomFlyWheel = new WPI_TalonSRX(1);
-  WPI_TalonSRX hoodWheel = new WPI_TalonSRX(2);*/
+  WPI_TalonSRX hoodWheel = new WPI_TalonSRX(3);
 
   //6-Wheel Arcade Drive Bot
-  WPI_TalonSRX topRight = new WPI_TalonSRX(1);
+  /*WPI_TalonSRX topRight = new WPI_TalonSRX(1);
   WPI_TalonSRX bottomRight = new WPI_TalonSRX(2);
   WPI_TalonSRX topLeft = new WPI_TalonSRX(3);
   WPI_TalonSRX bottomLeft = new WPI_TalonSRX(4);
   SpeedControllerGroup left;
   SpeedControllerGroup right;
-  DifferentialDrive driveTrain;
+  DifferentialDrive driveTrain;*/
 
   @Override
   public void robotInit() {
@@ -67,9 +69,16 @@ public class Robot extends TimedRobot {
     driveTrain = new DifferentialDrive(left, right);*/
 
     //6-Wheel Arcade Drive Bot
+    /*topRight.setInverted(false);
+    bottomRight.setInverted(false);
+    topLeft.setInverted(false);
+    bottomLeft.setInverted(false);
     left = new SpeedControllerGroup(topLeft, bottomLeft);
     right = new SpeedControllerGroup(topRight, bottomRight);
-    driveTrain = new DifferentialDrive(left, right);
+    driveTrain = new DifferentialDrive(right, left);*/
+
+    //Shooter Testing
+    topFlyWheel.setInverted(true);
 
     colors.addColorMatch(blueTarget);
     colors.addColorMatch(greenTarget);
@@ -117,22 +126,31 @@ public class Robot extends TimedRobot {
     //Mecanum Arcade Drive
     //driveTrain.arcadeDrive(leftStickY, -rightStickX);
 
-    //Shooter Code
-    /*buttonA = controller.getRawButton(1);
+    
+    buttonA = controller.getRawButton(1);
     buttonB = controller.getRawButton(2);
+    buttonX = controller.getRawButton(3);
+    buttonY = controller.getRawButton(4);
+    //Shooter Code
     if(buttonA == true){
       topFlyWheel.set(1.0);
       bottomFlyWheel.set(1.0);
-    } else if(buttonB == true){
-      hoodWheel.set(1.0);
-    } else{
+    }else if(buttonB == true){
+      topFlyWheel.set(0.80);
+      bottomFlyWheel.set(0.80);
+    }else if(buttonX == true){
+      topFlyWheel.set(0.50);
+      bottomFlyWheel.set(0.50);
+    }else if(buttonY == true){
+      topFlyWheel.set(0.25);
+      bottomFlyWheel.set(0.25);
+    }else{
       topFlyWheel.set(0.0);
       bottomFlyWheel.set(0.0);
-      hoodWheel.set(0.0);
-    }*/
+    }
 
     //6-Wheel Arcade Drive
-    driveTrain.arcadeDrive(leftStickY, leftStickX);
+    //driveTrain.arcadeDrive(leftStickY, leftStickX);
   }
 
   @Override
