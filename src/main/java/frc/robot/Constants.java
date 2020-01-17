@@ -17,11 +17,11 @@ package frc.robot;
  */
 public final class Constants {
 
-    // TODO: set IDs
-    public static final int rightFrontDrive = 0;
-    public static final int rightBackDrive = 0;
-    public static final int leftFrontDrive = 0;
-    public static final int leftBackDrive = 0;
+    
+    public static final int rightFrontDrive = 2;
+    public static final int rightBackDrive = 4;
+    public static final int leftFrontDrive = 1;
+    public static final int leftBackDrive = 3;
 
     public static final int controllerDeadband = 0;
 
