@@ -33,7 +33,7 @@ public class RobotContainer {
       new RunCommand(() -> drivetrain.drive(
         driverController.getY(GenericHID.Hand.kLeft),
         driverController.getX(GenericHID.Hand.kLeft),
-        driverController.getX(GenericHID.Hand.kRight))));
+        driverController.getX(GenericHID.Hand.kRight)), drivetrain));
 
     configureButtonBindings();
 
